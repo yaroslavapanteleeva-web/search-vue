@@ -2,9 +2,10 @@
     <ul class="tabs">
         <li 
             class="tabs__item"
+            :class="{'tabs__item_active': tab.id === activeId }"
             v-for="tab in tabs"
             :key="tab.id"
-            @click="setActiveClass($event, tab.id)"
+            @click="setActiveClass(tab.id)"
         > 
             {{ tab.value }} 
         </li>
@@ -18,12 +19,14 @@
         },
         data() {
             return {
-                nameActiveClass: 'tabs__item_active'
+                activeId: 'all'
             }
         },
         methods: {
-            setActiveClass(event, id) {
-                console.log(event, id);
+            setActiveClass(id) {
+                this.activeId = id;
+
+                this.$store.commit('filter/changeFiter', id);
             }
         }
     }
