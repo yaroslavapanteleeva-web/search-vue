@@ -26,7 +26,7 @@
             setActiveClass(id) {
                 this.activeId = id;
 
-                this.$store.commit('filter/changeFiter', id);
+                this.$store.commit('filter/getValueTab', this.activeId);
             }
         }
     }

@@ -2,54 +2,37 @@ export default {
     namespaced: true,
     state() {
         return {
-            value: 'all',
-            items: [],
-            sortItems: [],
-            enteredSearch: ''
+            tabValue: 'all',
+            enteredSearch: '',
+            items: []
         }
     },
     mutations: {
-        changeFiter(state, payload) {
-            state.value = payload;
-            if (state.value === 'all') {
-                state.sortItems = JSON.parse(JSON.stringify(state.items))
-            } else {
-                state.sortItems = state.items.filter(item => item.position === state.value);
-
-            }
+        getValueTab(state, payload) {
+            state.tabValue = payload;
         },
-        getArrayEmployees(state, payload) {
-            // state.sortItems = JSON.parse(JSON.stringify(state.items));
-            state.sortItems = payload;
-            state.items = payload;
-        },
-        getEnteredSearch(state, payload) {
+        getEnterSearch(state, payload) {
             state.enteredSearch = payload;
-
-            // const newState = state.sortItems.filter(item => {
-            //     if (state.enteredSearch === "") return item;
-            //     else if (item.firstName.toLowerCase().indexOf(state.enteredSearch.toLowerCase()) !== -1 || 
-            //         item.lastName.toLowerCase().indexOf(state.enteredSearch.toLowerCase()) !== -1 || 
-            //         item.userTag.toLowerCase().indexOf(state.enteredSearch.toLowerCase()) !== -1
-            //     ) {
-            //         return item;
-            //     }
-            //     return '';
-            // })
-
+        },
+        getListEmployees(state, payload) {
+            state.items = payload;
         }
-    },
+    }, 
     actions: {
-        getArrayEmployees(context, payload) {
-            context.commit('getArrayEmployees', payload);
+        getListEmployees(context, payload) {
+            context.commit('getListEmployees', payload);
         }
     },
     getters: {
-        filter(state) {
-            return state.value;
+        tab(state) {
+            return state.tabValue;
         },
-        employees(state) {
-            return state.sortItems;
+        search(state) {
+            return state.enteredSearch;
+        },
+        listEmployees(state) {
+            return state.items;
         }
+
     }
 }
