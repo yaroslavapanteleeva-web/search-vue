@@ -19,15 +19,17 @@
         },
         data() {
             return {
-                activeId: 'all'
+                activeId: null
             }
         },
         methods: {
             setActiveClass(id) {
                 this.activeId = id;
-
                 this.$store.commit('filter/getValueTab', this.activeId);
             }
+        },
+        created() {
+            this.activeId = this.$store.getters['filter/tab'];
         }
     }
 </script>
