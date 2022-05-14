@@ -4,11 +4,17 @@
             <img src="../../assets/images/search-error.jpg" alt="error" />
         </div>
         <div class="error__description">
-            <h2 class="error__title">Мы никого не нашли</h2>
-            <p class="error__text">Попробуй скорректировать запрос</p>
+            <h2 class="error__title">{{ title }}</h2>
+            <p class="error__text">{{ text }}</p>
         </div>
     </div>
 </template>
+
+<script>
+    export default {
+        props: ['title', 'text']
+    }
+</script>
 
 <style lang="scss">
     .error {
