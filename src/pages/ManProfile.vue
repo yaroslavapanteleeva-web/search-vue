@@ -114,6 +114,10 @@
         &__arrow-back {
             margin-top: 8px;
             cursor: pointer;
+            transition: transform .3s ease-in;
+            &:hover {
+                transform: scale(1.2);
+            }
         }
         &__profile {
             margin-top: 30px;
@@ -166,11 +170,17 @@
         }
         &__phone {
             text-decoration: none;
+            &:hover {
+                .profile__phone-text {
+                    transform: scale(1.05);
+                }
+            }
             &-text {
                 font-weight: 500;
                 font-size: 16px;
                 line-height: 20px;
                 color: #050510;
+                transition: transform .3s ease-in;
             }
         }
         &__birthday, &__phone {
